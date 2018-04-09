@@ -22,7 +22,7 @@
 ** 50 would be inputed into the parameter
 **
 ** NOTE: this means that we can only take
-** up to size - strlen(dst) - 1
+** up to size - strlen[dst] - 1
 **
 ** I wrote count++ in condition to save lines
 ** but could be more confusing. Also
@@ -72,7 +72,7 @@ size_t	ft_strlcat(char *restrict dst, const char *restrict src, size_t size)
 		++d_tracker;
 	}
 	if (count == size && *d_tracker != '\0')
-		return (size + strlen(src));
+		return (size + ft_strlen(src));
 	while (count < size - 1 && *src != '\0')
 	{
 		*d_tracker = *src;

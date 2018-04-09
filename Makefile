@@ -28,7 +28,7 @@ SOURCES = ft_putchar_fd.c ft_strcmp.c ft_strlen.c ft_strrchr.c ft_atoi.c \
 	  	ft_putendl_fd.c ft_memchr.c ft_memcmp.c ft_memalloc.c \
       ft_memdel.c ft_strnew.c ft_strdel.c ft_strclr.c ft_striter.c ft_striteri.c ft_strmap.c ft_strmapi.c\
       ft_strsplit.c ft_strequ.c ft_strnequ.c ft_strsub.c ft_strjoin.c ft_strtrim.c\
-	  ft_itoa.c ft_lstnew.c ft_lstdelone.c ft_lstadd.c ft_lstmap.c\
+	  ft_itoa.c ft_lstnew.c ft_lstdel.c ft_lstdelone.c ft_lstadd.c ft_lstmap.c ft_lstiter.c\
 	  ft_strrev.c ft_swap.c ft_recursive_power.c ft_is_prime.c\
 	  ft_iterative_power.c ft_recursive_factorial.c ft_iterative_factorial.c\
 	  ft_str_is_printable.c ft_sqrt.c ft_list_last.c ft_div_mod.c ft_list_size.c\
