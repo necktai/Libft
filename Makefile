@@ -11,11 +11,12 @@
 # **************************************************************************** #
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -c
+CFLAGS = -Wall -Wextra -Werror -c -I ./includes
 
 NAME = libft.a
 
-SOURCES = ft_putchar_fd.c ft_strcmp.c ft_strlen.c ft_strrchr.c ft_atoi.c \
+SOURCES = $(addprefix ./srcs/, \
+      ft_putchar_fd.c ft_strcmp.c ft_strlen.c ft_strrchr.c ft_atoi.c \
 	  ft_memccpy.c    ft_putendl.c    ft_strcpy.c       \
 	  ft_bzero.c          ft_putnbr.c        \
       	  ft_strstr.c ft_isalnum.c         ft_putnbr_fd.c  ft_strdup.c \
@@ -32,14 +33,17 @@ SOURCES = ft_putchar_fd.c ft_strcmp.c ft_strlen.c ft_strrchr.c ft_atoi.c \
 	  ft_strrev.c ft_swap.c ft_recursive_power.c ft_is_prime.c\
 	  ft_iterative_power.c ft_recursive_factorial.c ft_iterative_factorial.c\
 	  ft_str_is_printable.c ft_sqrt.c ft_list_last.c ft_div_mod.c ft_list_size.c\
+	  )\
 
 OBJECTS = $(SOURCES:%.c=%.o)
 
 all: $(NAME)
 
-$(NAME):
-	$(CC) $(CFLAGS) $(SOURCES)
+$(NAME): $(OBJECTS)
 	ar rc $(NAME) $(OBJECTS)
+
+%.o: %.c
+	$(CC) $(CFLAGS) -o $@ $<
 
 clean:
 	rm -f $(OBJECTS)
