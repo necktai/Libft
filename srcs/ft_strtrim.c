@@ -12,6 +12,17 @@
 
 #include "libft.h"
 
+/*
+** its important that in the case
+** where " \t \t \t ", you return
+** back '\0' BUT the new string should
+** be malloced to that even if its just
+** a '\0'. If you just return '\0',
+** the function free cannot be used
+** on it. I spent a lot of time trying
+** to fix that on the unit test.
+*/
+
 static	char	*ft_traverse_f(char const *s)
 {
 	while ((*s == '\n' || *s == ' ' || *s == '\t') && *s != '\0')
@@ -21,19 +32,30 @@ static	char	*ft_traverse_f(char const *s)
 
 static	char	*ft_traverse_b(char const *s)
 {
-	while (*s)
-		++s;
+	int flag;
+
+  	flag = 0;
+    while (*s)
+    {
+      if (*s != '\n' && *s != ' ' && *s != '\t')
+        flag = 1;
+        ++s;
+    }
+    if (flag == 0)
+      return ((char *)s);
 	s -= 1;
 	while (*s == '\n' || *s == ' ' || *s == '\t')
 		s -= 1;
 	return ((char *)s);
 }
 
-static	int		ft_counter(char *s1, char *s2)
+static	int		ft_counter(char const *s1, char const *s2)
 {
 	int n;
 
 	n = 0;
+	if (*s2 == '\0')
+		return (n);
 	while (s1 != s2)
 	{
 		++s1;
@@ -56,8 +78,9 @@ char			*ft_strtrim(char const *s)
 	tracker = ft_traverse_f(s);
 	tracker2 = ft_traverse_b(s);
 	new_string_length = ft_counter(tracker, tracker2);
-	new_string_length++;
-	new_string = (char *)malloc(new_string_length + 1);
+	if (new_string_length != 0)
+		new_string_length++;
+	new_string = ft_strnew(new_string_length + 1);
 	if (new_string == NULL)
 		return (NULL);
 	place_hold = new_string;
@@ -67,30 +90,3 @@ char			*ft_strtrim(char const *s)
 	*new_string = '\0';
 	return (place_hold);
 }
-
-// char	*ft_strtrim(char const *s)
-// {
-// 	int		i;
-// 	int		j;
-// 	int		k;
-// 	char	*str;
-
-// 	i = 0;
-// 	j = 0;
-// 	if (!s)
-// 		return (NULL);
-// 	while (s[i] == ' ' || s[i] == '\n' || s[i] == '\t')
-// 		i++;
-// 	while (s[j])
-// 		j++;
-// 	while ((s[j - 1] == ' ' || s[j - 1] == '\n' || s[j - 1] == '\t') && (j > i))
-// 		j--;
-// 	k = j - i;
-// 	if (!(str = (char *)malloc((sizeof(char) * k) + 1)))
-// 		return (NULL);
-// 	k = 0;
-// 	while (i < j)
-// 		str[k++] = s[i++];
-// 	str[k] = '\0';
-// 	return (str);
-// }
