@@ -6,7 +6,7 @@
 /*   By: ntai <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/31 21:58:57 by ntai              #+#    #+#             */
-/*   Updated: 2018/04/07 22:38:44 by ntai             ###   ########.fr       */
+/*   Updated: 2018/04/14 23:20:47 by ntai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,6 +159,8 @@ char			**ft_strsplit(char const *s, char c)
 	size_t	i;
 	size_t	num_words;
 
+	if (!s)
+		return (NULL);
 	num_words = 0;
 	i = 0;
 	num_words = ft_word_count(s, c);
