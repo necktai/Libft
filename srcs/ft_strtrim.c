@@ -6,7 +6,7 @@
 /*   By: ntai <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/01 23:06:08 by ntai              #+#    #+#             */
-/*   Updated: 2018/04/14 23:21:38 by ntai             ###   ########.fr       */
+/*   Updated: 2018/04/15 17:21:35 by ntai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,15 @@ static	char	*ft_traverse_b(char const *s)
 {
 	int flag;
 
-  	flag = 0;
-    while (*s)
-    {
-      if (*s != '\n' && *s != ' ' && *s != '\t')
-        flag = 1;
-        ++s;
-    }
-    if (flag == 0)
-      return ((char *)s);
+	flag = 0;
+	while (*s)
+	{
+		if (*s != '\n' && *s != ' ' && *s != '\t')
+			flag = 1;
+		++s;
+	}
+	if (flag == 0)
+		return ((char *)s);
 	s -= 1;
 	while (*s == '\n' || *s == ' ' || *s == '\t')
 		s -= 1;
